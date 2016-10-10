@@ -1,8 +1,14 @@
-<h1>Dash Board</h1>
 
 <div id="ads">
+
+{{#if messages}}
+    <div class="alert alert-danger">
+      {{ messages }}
+    </div>
+{{/if}}
   {{#each ads}}
-  <h2><a href="#">{{title}}</a></h2>
-  <div>{{category}}, {{price}}, {{owner}}</div>
+  
+  <div class="well"><a href="/ads/details/{{id}}">{{title}}</a> for {{ price }} posted on  {{postdate}}</div>
+  
   {{/each}}
 </div>

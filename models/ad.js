@@ -11,7 +11,8 @@ var schema = new Schema({
   desc: {type: String},
   images:  { type : Array , "default" : [] },
   rejectionComments: {type: String},
-  status: {type: String}
+  status: {type: String}, 
+  postdate: {type: Date, default: Date.now}
 });
 
 module.exports = mongoose.model('Ad',schema);

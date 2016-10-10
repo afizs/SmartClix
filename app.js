@@ -13,6 +13,7 @@ var flash = require('connect-flash');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var ads = require('./routes/ads'); 
 
 var app = express();
 mongoose.Promise = global.Promise;
@@ -43,7 +44,9 @@ app.use(function(req, res, next){
 });
 
 app.use('/', routes);
+app.use('/ads', ads);
 app.use('/users', users);
+ 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

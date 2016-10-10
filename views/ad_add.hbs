@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>Enter Add Details </h1>
+    {{#if hasErrors}}
+    <div class="alert alert-danger">
+      {{# each messages}}
+        <p>{{this}}</p>
+      {{/each}}
+    </div>
+
+    {{/if}}
+    <form action="add" method="post">
+      <div class="form-group">
+        <label for="title">title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+        <label for="owner">owner</label>
+        <input type="text" class="form-control" id="owner" name="owner" placeholder="owner">
+        <label for="price">price</label>
+        <input type="text" class="form-control" id="price" name="price" placeholder="price">
+        <label for="category">category</label>
+        <input type="text" class="form-control" id="category" name="category" placeholder="category">
+        <label for="desc">Desc</label>
+		<textarea class="form-control" rows="5" id="desc" name="desc" placeholder="Enter the details"></textarea>
+        
+      </div>
+      <input type='hidden' name='_csrf' value="{{ csrfToken }}">
+      <button type="submit" class="btn btn-default">Post add</button>
+    </form>
+
+  </div>
+</div>
+

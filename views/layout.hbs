@@ -2,31 +2,45 @@
 <html>
   <head>
     <title>{{title}}</title>
+
+<link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 <link rel='stylesheet' href='/css/bootstrap.min.css' />
+ <script src = " http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js " ></script >
 <link rel='stylesheet' href='/css/style.css' />
   </head>
   <body>
-    <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">
-          <img alt="Brand" src="/images/logo.png" width="40px">
-        </a>
-
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-        {{# if login}}
-          <li><a href="/users/logout">Logout</a></li>
-        {{ else }}
-            <li><a href="/users/signin">Login</a></li>
-        {{/if}}
-      </ul>
-    </div>
-  </nav>
+  <div class="container">
+  <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active" ><a href="/">Home</a>
+                    </li>
+                 
+					
+					{{# if login}}
+					<li role="presentation"><a href="/dashboard">Your Ads</a>
+                    </li>
+                    <li role="presentation"><a href="/ads/add">Post Add</a>
+                    </li>
+					  <li role="presentation"><a href="/users/logout">Logout</a>
+					{{ else }}
+						<li role="presentation"><a href="/users/signin">Sign In</a></li>
+				{{/if}}
+                   
+					
+                </ul>
+            </nav>
+			<a class="navbar-brand" href="/home">
+			<img alt="Brand" src="/images/logo.png" width="40px">
+			</a>
+            <h3 class="text-muted">SPI Clicx</h3>
+        </div>
+		
+    
 
     {{{body}}}
 
-
+	</div> 
     <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

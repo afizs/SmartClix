@@ -13,13 +13,14 @@ router.get('/profile', isLoggedIn, function(req, res, next){
   res.render('profile');
 });
 
-router.use('/', notLoggedIn, function(req, res, next){
+router.use('/home', notLoggedIn, function(req, res, next){
   next();
 })
 
 router.get('/home', function(req, res, next) {
   res.render('home', {title:'Home'});
 });
+
 /*Signup page*/
 router.get('/signup', function(req, res, next){
   var messages = req.flash('error');
@@ -68,7 +69,7 @@ function isLoggedIn(req, res, next){
   if (req.isAuthenticated()){
     return next();
   }
-  res.redirect('/');
+  res.redirect('/home');
 }
 
 function notLoggedIn(req, res, next){

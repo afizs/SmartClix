@@ -19,13 +19,13 @@ router.get('/home', function(req, res, next) {
 dashboard to display available ads
 */
 router.get('/dashboard',function(req, res, next) {
-  Ad.find(function(err, ads){
-    if(err){
+  Ad.find({}).sort({postdate:-1}).exec(function(err, ads){
+   if(err){
           console.log("Unable to connect to collection");
         }
         else if(ads.length){
           res.render('dashboard', {'ads':ads});
-          console.log(ads);
+          // console.log(ads);
         }
         else {
           console.log("No documents found");
