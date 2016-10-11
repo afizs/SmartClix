@@ -1,0 +1,34 @@
+db.ads.aggregate([
+{"$match":{"category": {"$ne": null} }},  {"$group": { "_id": { "category": "$category"},  "count": {"$sum": 1} }} ])
+
+
+db.ads.aggregate([
+{"$match":{"category": {"$ne": null} }},  {"$group": { "_id": { "category": "$category"},  "count": {"$sum": 1} }} ])
+
+db.ads.aggregate([
+{"$match":{"category": {"$ne": null} }},  {"$group": { "_id": { "category": "$category","subcategory": "$subcategory" },  "count": {"$sum": 1} }} ])
+
+
+db.ads.aggregate([
+{"$match":{"category": {"$ne": null} }},  {"$group": { "category": { "subcategory": "$subcategory" },  "count": {"$sum": 1} }} ])
+
+db.ads.aggregate([
+{"$group": { "_id": { "category": "$category","subcategory": "$subcategory" },  "count": {"$sum": 1} }} ])
+
+
+
+
+db.ads.aggregate([
+        {
+            $group: {
+                _id: '$subcategory',  //$region is the column name in collection
+                count: {$sum: 1}
+            }
+        }
+    ], function (err, result) {
+        if (err) {
+            next(err);
+        } else {
+            res.json(result);
+        }
+    });

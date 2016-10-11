@@ -1,5 +1,8 @@
 
 
 a {
-  color: #00B7FF;
+  color:   #17202a  ;
 }
+a:hover {color:#f39c12 ;}
+
+body { padding-top: 70px; }

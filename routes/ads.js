@@ -18,41 +18,54 @@ router.get('/home', function(req, res, next) {
 router.get('/add', function(req, res, next){
 	var messages = req.flash('error');
 	res.render('ad_add', {csrfToken: req.csrfToken(), messages: messages, hasErrors:messages.length >0});
-}); 
+});
 
 router.post('/add', (req, res, done)=>{
 
-	newAd = new Ad(); 
-	newAd.title = req.body.title; 
-	newAd.owner = req.body.owner; 
-	newAd.price = req.body.price; 
-	newAd.category = req.body.category; 
-	newAd.desc = req.body.desc; 
-	
+	newAd = new Ad();
+	newAd.title = req.body.title;
+	newAd.owner = req.body.owner;
+	newAd.price = req.body.price;
+	newAd.category = req.body.category;
+	newAd.desc = req.body.desc;
+
 	newAd.save(function(err, result){
 		  if(err){
-			console.log("ERRORRRRR"); 
+			console.log("ERRORRRRR");
 			return done(err);
 		  }
-		  res.redirect('/dashboard'); 
+		  res.redirect('/dashboard');
 		});
 
 });
 
 router.get('/details/:id', (req, res)=>{
-	id = req.params.id; 
-	var ad = Ad.find({_id:id}, function(err, ad){
+	id = req.params.id;
+  var ad = Ad.find({_id:id}, function(err, ad){
 		if(err){
-			return next(err); 
+			return next(err);
 		}
 		else{
-			console.log(ad); 
+			console.log(ad);
 			res.render('details', {'ad': ad});
 		}
-	
+
 	});
-	
+
 });
 
+router.get('/category/:id', (req, res)=>{
+  id = req.params.id;
+
+  var ad = Ad.find({category: id}, function(err, ads){
+      if(err){
+        return next(err);
+      }
+      else{
+        console.log("=====>"+ads);
+        res.render('dashboard', {'ads':ads});
+      }
+  });
+});
 
 module.exports = router;
